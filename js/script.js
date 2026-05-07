@@ -1,28 +1,25 @@
-const flashlight = document.getElementById('flashlight');
-const video = document.getElementById('bgVideo');
-const btnPlay = document.getElementById('btnPlay');
-const btnStart = document.getElementById('btnStart');
-const bgMusic = new Audio('audio-ia.mp3');
+/**
+ * Gestión de la landing page híbrida: Video IA + Audio IA
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('gameVideo');
+    const playBtn = document.getElementById('playTrigger');
+    const gameLink = document.getElementById('gameLink');
 
-// Rastro de linterna
-window.addEventListener('mousemove', e => {
-    flashlight.style.setProperty('--x', `${e.clientX}px`);
-    flashlight.style.setProperty('--y', `${e.clientY}px`);
-});
+    // Carga del audio generado por IA [cite: 3]
+    const ambienceAudio = new Audio('audio-efecto-ia.mp3');
+    ambienceAudio.loop = true;
 
-// Lógica de inicio de sesión
-btnPlay.addEventListener('click', () => {
-    // Activar multimedia
-    video.muted = false;
-    video.play();
-    bgMusic.play();
+    playBtn.addEventListener('click', () => {
+        // Ejecución de Play vía JavaScript 
+        video.muted = false;
+        video.play();
+        ambienceAudio.play();
 
-    // Transición de interfaz
-    btnPlay.style.display = 'none';
-    btnStart.classList.remove('hidden');
-    
-    // Cambiamos el color de la linterna tras activar
-    flashlight.style.background = `radial-gradient(circle 250px at var(--x) var(--y), 
-                                   transparent 0%, 
-                                   rgba(0,30,0,0.8) 100%)`;
+        // Switch de UI: Ocultar Play / Mostrar enlace al juego [cite: 8]
+        playBtn.classList.add('hidden');
+        gameLink.classList.remove('hidden');
+        
+        console.log("Sistema de audio y video inicializado correctamente.");
+    });
 });
