@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ghost Hunter Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div id="flashlight"></div>
+
+    <main class="viewport">
+        <video id="bgVideo" loop muted playsinline class="main-video">
+            <source src="/video-generado.mp4" type="video/mp4"> 
+        </video>
+
+        <div class="hud-container">
+            <header class="game-header">
+                <h1 class="glitch-title" data-text="LUIGI'S REVENGE">LUIGI'S REVENGE</h1> [cite: 1]
+            </header>
+
+            <div class="ui-panel">
+                <div class="status-monitor">
+                    <p>STATUS: <span class="pulse">ESPECTRO DETECTADO</span></p>
+                </div>
+                
+                <nav class="actions">
+                    <button id="btnPlay" class="btn-main">SINCRONIZAR EQUIPO</button> 
+                    <a href="game.html" id="btnStart" class="btn-sec hidden">INICIAR MISIÓN</a> [cite: 8]
+                </nav>
+            </div>
+        </div>
+    </main>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
