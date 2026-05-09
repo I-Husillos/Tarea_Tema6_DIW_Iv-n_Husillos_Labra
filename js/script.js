@@ -21,3 +21,19 @@ video.addEventListener('click', () => {
 video.addEventListener('pause', () => {
     overlay.style.display = 'flex';
 });
+
+// Control por teclado usando el objeto Event del DOM
+document.addEventListener('keydown', (event) => {
+    // Verificar si la tecla presionada es la barra espaciadora
+    if (event.code === 'Space') {
+        event.preventDefault();
+
+        if(video.paused) {
+            video.play().then(() => {
+                overlay.style.display = 'none';
+            });
+        } else {
+            video.pause();
+        }
+    }
+});
