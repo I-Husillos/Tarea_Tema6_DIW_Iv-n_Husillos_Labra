@@ -1,66 +1,195 @@
-:root {
-    --spectral-green: #2ecc71;
-    --ghost-glow: 0 0 20px #a2d149;
-    --dark-wood: #1a1a1a;
-}
-
 body {
-    margin: 0;
-    background-color: #050505;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 12px;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #0a0f0a;
+    color: #222;
 }
 
-.game-container {
-    position: relative;
+/* contenedor principal, mismo grid-root que el juego */
+.landing-root {
+    max-width: 1200px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 30px;
 }
 
-.video-frame {
-    width: 80vw;
-    max-width: 800px;
-    border: 4px solid var(--spectral-green);
-    box-shadow: var(--ghost-glow);
-    border-radius: 12px;
+/* cabecera con título igual que .room-name */
+.room-name {
+    background: #222;
+    color: #0f0;
+    padding: 10px;
+    text-align: center;
+    border-radius: 4px;
+    width: 100%;
 }
 
-.ui-overlay {
-    margin-top: 20px;
+.room-name h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.room-name p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #7ec87e;
+    font-style: italic;
+}
+
+/* contenedor del vídeo — mismo look que .player-card */
+.video-wrapper {
+    background: url(/img/ui/console-edit.png) no-repeat center / 100% 100%;
+    width: 100%;
+    max-width: 700px;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 60px;
+    box-sizing: border-box;
+    position: relative;
 }
 
-.btn-ghost, .btn-start {
-    padding: 12px 24px;
-    background: var(--dark-wood);
-    color: var(--spectral-green);
-    border: 2px solid var(--spectral-green);
+#gameVideo {
+    width: 100%;
+    border-radius: 4px;
+    display: block;
+    background: #000;
+    aspect-ratio: 16/9;
+}
+
+/* overlay de play, mismo estilo que mensajes */
+#playOverlay {
+    position: absolute;
+    inset: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #051505;
+    border: 2px solid #004400;
+    border-radius: 4px;
     cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
+    color: #cfc;
+    font-family: monospace;
+    font-size: 14px;
+    gap: 12px;
 }
 
-.btn-ghost:hover {
-    transform: scale(1.1);
-    box-shadow: var(--ghost-glow);
+#playOverlay:hover {
+    border-color: #00ff00;
+    color: #0f0;
 }
 
-.hidden {
-    display: none;
+#playOverlay:hover .play-circle {
+    box-shadow: 0 0 10px #00ff00;
+    border-color: #00ff00;
 }
 
-.flashlight-overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    pointer-events: none; /* Permite hacer clic a través de él */
-    background: radial-gradient(circle 150px at var(--x) var(--y), rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 100%);
-    z-index: 10;
+.play-circle {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #00cc00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.play-circle svg {
+    width: 28px;
+    height: 28px;
+    fill: #00ff00;
+    transform: translateX(3px);
+}
+
+/* descripción — misma caja que .messages */
+.messages {
+    background-color: #051505;
+    color: #cfc;
+    border: 2px solid #004400;
+    border-radius: 8px;
+    padding: 15px;
+    font-family: monospace;
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+}
+
+.messages p {
+    margin: 0 0 6px;
+    line-height: 1.6;
+}
+
+.messages p:last-child {
+    margin-bottom: 0;
+}
+
+/* panel de botones — mismo estilo que .interaction */
+.interaction {
+    background-color: #001100;
+    border: 4px solid #cc3333;
+    border-radius: 20px;
+    color: #00ff00;
+    padding: 15px;
+    box-shadow: inset 0 0 10px #000;
+    width: 100%;
+    max-width: 700px;
+    box-sizing: border-box;
+}
+
+.btn-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* botones idénticos a los del juego */
+.btn {
+    background-color: rgba(0, 255, 0, 0.2);
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    padding: 3px 5px;
+    font-size: 11px;
+    height: 28px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    font-family: Georgia, serif;
+}
+
+.btn:hover {
+    background-color: #00ff00;
+    color: #000;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.btn.blue {
+    background-color: rgba(0, 180, 255, 0.4);
+    border-color: #b3e5fc;
+    color: #fff;
+    box-shadow: 0 0 5px #00bfff;
+}
+
+.btn.blue:hover {
+    background-color: #00bfff;
+    box-shadow: 0 0 15px #fff;
+}
+
+.btn.big {
+    height: auto;
+    padding: 8px 24px;
+    font-size: 14px;
+}
+
+footer {
+    font-family: monospace;
+    color: #004400;
+    font-size: 12px;
+    text-align: center;
+    padding-bottom: 10px;
 }
